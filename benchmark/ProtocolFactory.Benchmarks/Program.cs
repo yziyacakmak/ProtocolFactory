@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using BenchmarkDotNet.Running;
+using ProtocolFactory.Benchmarks.Benchmarks;
+
 Console.WriteLine("Hello, World!");
+BenchmarkRunner.Run<AllocationBenchmark1>();

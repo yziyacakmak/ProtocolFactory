@@ -1,0 +1,12 @@
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/bin/Release/net8.0/ProtocolFactory.deps.json
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/bin/Release/net8.0/ProtocolFactory.dll
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/bin/Release/net8.0/ProtocolFactory.pdb
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.GeneratedMSBuildEditorConfig.editorconfig
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.AssemblyInfoInputs.cache
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.AssemblyInfo.cs
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.csproj.CoreCompileInputs.cache
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.sourcelink.json
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.dll
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/refint/ProtocolFactory.dll
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ProtocolFactory.pdb
+/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/Release/net8.0/ref/ProtocolFactory.dll

@@ -25,6 +25,69 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/ProtocolFactory.csproj": {
+                "projectPath": "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/ProtocolFactory.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "BenchmarkDotNet": {
+              "target": "Package",
+              "version": "[0.14.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/ProtocolFactory.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/ProtocolFactory.csproj",
+        "projectName": "ProtocolFactory",
+        "projectPath": "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/ProtocolFactory.csproj",
+        "packagesPath": "/home/yzc/.nuget/packages/",
+        "outputPath": "/home/yzc/Projects/ProtocolFactory/src/ProtocolFactory/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/yzc/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
