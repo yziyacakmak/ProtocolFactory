@@ -14,7 +14,6 @@ public class Benchmark
 {
     private byte[] protocolData;
     private MyFirstProtocol protocolInstance;
-    // 1. Consumer örneğini tanımlayın
     private readonly Consumer consumer = new Consumer();
 
     [GlobalSetup]
@@ -29,12 +28,9 @@ public class Benchmark
     {
         // 1. Deserialization'ı çağır
         protocolInstance.Deserialize(protocolData);
-
-        // 2. JIT'ın kodu optimize etmesini önlemek için, 
-        // Deserialization'ın sonucunda değişen bir alanı kullanın veya döndürün.
-        // MyFirstProtocol'ün First alanının değiştiğini varsayalım.
-        // BenchmarkDotNet'in 'Consume' metodunu kullanmak en iyi yoldur.
         consumer.Consume(protocolInstance.First);
+        consumer.Consume(protocolInstance.Second);
+        consumer.Consume(protocolInstance.Third);
     }
 
 

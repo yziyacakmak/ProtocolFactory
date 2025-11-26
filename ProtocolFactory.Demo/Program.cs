@@ -14,9 +14,9 @@ var bbbb= new MyFirstProtocol();
 
 ///can recieved byte[]
 
-bbbb.Deserialize(protocolData);
+// bbbb.Deserialize(protocolData);
 
-Console.WriteLine(bbbb.First);
+// Console.WriteLine(bbbb.First);
 
 
 
