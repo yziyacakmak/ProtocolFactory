@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "S:\\projects\\ProtocolFactory\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|solutionrelative:protocolfactory.demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\example\\myfirstprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|solutionrelative:protocolfactory.demo\\example\\myfirstprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\benchmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|solutionrelative:protocolfactory.demo\\benchmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\example\\myfirstprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|solutionrelative:protocolfactory.demo\\example\\myfirstprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|solutionrelative:protocolfactory.demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2F39697-0492-4D0A-9A06-90A13042DCD9}|ProtocolFactory\\ProtocolFactory.Core.csproj|s:\\projects\\protocolfactory\\protocolfactory\\math\\deserialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2F39697-0492-4D0A-9A06-90A13042DCD9}|ProtocolFactory\\ProtocolFactory.Core.csproj|solutionrelative:protocolfactory\\math\\deserialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|s:\\projects\\protocolfactory\\protocolfactory.analyzers\\protocolclassextendergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|solutionrelative:protocolfactory.analyzers\\protocolclassextendergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9D3DDA8F-4CF5-41E7-BA86-A73D0D3EF77E}|ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj|s:\\projects\\protocolfactory\\protocolfactory.demo\\protocolfactory.demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -27,24 +35,12 @@
       "RelativeMoniker": "D:0:0:{F2F39697-0492-4D0A-9A06-90A13042DCD9}|ProtocolFactory\\ProtocolFactory.Core.csproj|solutionrelative:protocolfactory\\protocolfactory.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|s:\\projects\\protocolfactory\\protocolfactory.analyzers\\protocolclassextensiongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|solutionrelative:protocolfactory.analyzers\\protocolclassextensiongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|s:\\projects\\protocolfactory\\protocolfactory.analyzers\\protocolclassextendergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|solutionrelative:protocolfactory.analyzers\\protocolclassextendergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|s:\\projects\\protocolfactory\\protocolfactory.analyzers\\protocolfactory.analyzers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{43A61CE5-D3EF-44E2-8374-92CC39CC4240}|ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj|solutionrelative:protocolfactory.analyzers\\protocolfactory.analyzers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2F39697-0492-4D0A-9A06-90A13042DCD9}|ProtocolFactory\\ProtocolFactory.Core.csproj|s:\\projects\\protocolfactory\\protocolfactory\\contracts\\iprotocolvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2F39697-0492-4D0A-9A06-90A13042DCD9}|ProtocolFactory\\ProtocolFactory.Core.csproj|solutionrelative:protocolfactory\\contracts\\iprotocolvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,65 +94,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Deserialization.cs",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Math\\Deserialization.cs",
-              "RelativeDocumentMoniker": "ProtocolFactory\\Math\\Deserialization.cs",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Math\\Deserialization.cs",
-              "RelativeToolTip": "ProtocolFactory\\Math\\Deserialization.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T12:37:25.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProtocolClassExtenderGenerator.cs",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
-              "RelativeDocumentMoniker": "ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
-              "RelativeToolTip": "ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T08:01:53.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProtocolFactory.Demo.csproj",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
-              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
-              "RelativeToolTip": "ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-26T07:57:01.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Program.cs",
-              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\Program.cs",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Program.cs",
-              "RelativeToolTip": "ProtocolFactory.Demo\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T08:54:33.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "MyFirstProtocol.cs",
               "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Example\\MyFirstProtocol.cs",
               "RelativeDocumentMoniker": "ProtocolFactory.Demo\\Example\\MyFirstProtocol.cs",
               "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Example\\MyFirstProtocol.cs",
               "RelativeToolTip": "ProtocolFactory.Demo\\Example\\MyFirstProtocol.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-26T07:32:49.734Z",
               "EditorCaption": ""
@@ -169,27 +113,90 @@
               "RelativeDocumentMoniker": "ProtocolFactory.Demo\\Benchmark.cs",
               "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Benchmark.cs",
               "RelativeToolTip": "ProtocolFactory.Demo\\Benchmark.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T12:43:01.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MyFirstProtocolExtensions.g.cs",
+              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
+              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
+              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
+              "RelativeToolTip": "ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T12:37:18.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Deserialization.cs",
+              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Math\\Deserialization.cs",
+              "RelativeDocumentMoniker": "ProtocolFactory\\Math\\Deserialization.cs",
+              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Math\\Deserialization.cs",
+              "RelativeToolTip": "ProtocolFactory\\Math\\Deserialization.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAQwDUAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T12:37:25.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ProtocolFactory.Core",
+              "Title": "ProtocolClassExtenderGenerator.cs",
+              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
+              "RelativeDocumentMoniker": "ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
+              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
+              "RelativeToolTip": "ProtocolFactory.Analyzers\\ProtocolClassExtenderGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T08:01:53.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Program.cs",
+              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\Program.cs",
+              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\Program.cs",
+              "RelativeToolTip": "ProtocolFactory.Demo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T08:54:33.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProtocolFactory.Demo.csproj",
+              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
+              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
+              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
+              "RelativeToolTip": "ProtocolFactory.Demo\\ProtocolFactory.Demo.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-26T07:57:01.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProtocolFactory.Core.csproj",
               "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\ProtocolFactory.Core.csproj",
               "RelativeDocumentMoniker": "ProtocolFactory\\ProtocolFactory.Core.csproj",
               "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\ProtocolFactory.Core.csproj",
               "RelativeToolTip": "ProtocolFactory\\ProtocolFactory.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-26T12:39:22.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-26T12:39:22.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ProtocolClassExtensionGenerator.cs",
               "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Analyzers\\ProtocolClassExtensionGenerator.cs",
               "RelativeDocumentMoniker": "ProtocolFactory.Analyzers\\ProtocolClassExtensionGenerator.cs",
@@ -197,21 +204,7 @@
               "RelativeToolTip": "ProtocolFactory.Analyzers\\ProtocolClassExtensionGenerator.cs",
               "ViewState": "AgIAAEwAAAAAAAAAAAAAwGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T10:36:42.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MyFirstProtocolExtensions.g.cs",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
-              "RelativeDocumentMoniker": "ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
-              "RelativeToolTip": "ProtocolFactory.Demo\\obj\\GeneratedFiles\\ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.ProtocolClassExtensionGenerator\\MyFirstProtocolExtensions.g.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T12:37:18.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-26T10:36:42.315Z"
             },
             {
               "$type": "Document",
@@ -223,20 +216,7 @@
               "RelativeToolTip": "ProtocolFactory.Analyzers\\ProtocolFactory.Analyzers.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-26T07:41:06.954Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IProtocolValue.cs",
-              "DocumentMoniker": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Contracts\\IProtocolValue.cs",
-              "RelativeDocumentMoniker": "ProtocolFactory\\Contracts\\IProtocolValue.cs",
-              "ToolTip": "S:\\projects\\ProtocolFactory\\ProtocolFactory\\Contracts\\IProtocolValue.cs",
-              "RelativeToolTip": "ProtocolFactory\\Contracts\\IProtocolValue.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T05:45:25.788Z"
+              "WhenOpened": "2025-11-26T07:41:06.954Z"
             }
           ]
         }

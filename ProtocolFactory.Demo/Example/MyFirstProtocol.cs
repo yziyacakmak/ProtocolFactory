@@ -17,5 +17,12 @@ namespace ProtocolFactory.Demo.Example
         [ProtocolField(0,16,Endianness.Big)]
         public int First { get; set;}
 
+        [ProtocolField(16, 8, Endianness.Big)]
+        public int Second { get; set; }
+
+
+        [ProtocolField(24, 8, Endianness.Little)]
+        public int Third { get; set; }
+
     }
 }

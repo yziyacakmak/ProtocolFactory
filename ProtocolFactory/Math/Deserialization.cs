@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ProtocolFactory.Core.Contracts;
+using ProtocolFactory.Core.Models;
 
 namespace ProtocolFactory.Core.Math;
 
@@ -17,10 +18,44 @@ public unsafe static void Deserialize<T, TProtoValue>(ref T instance, ReadOnlySp
     where T : class,IProtocol<T>
     where TProtoValue : struct, IProtocolValue<TProtoValue>
         {
-            
+                    var protoValues= default(TProtoValue);
+
+        for (int i=0;i< protoValues.FieldCount;i++)
+        {
+            var startBit= protoValues.StartBits[i];
+            var length= protoValues.Lengths[i];
+            var endian= protoValues.Endians[i];
+
+            int byteStartIndex = startBit / 8;
+            int bitOffset = startBit % 8;
+            int totalBits = length;
+            int totalBytes = (totalBits + bitOffset + 7) / 8;
+            ReadOnlySpan<byte> fieldBytes = source.Slice(byteStartIndex, totalBytes);
+            int shiftStart = bitOffset;
+            int result = 0;
+
+            foreach (var byteValue in fieldBytes)
+            {
+                result |= (byteValue << shiftStart);
+                shiftStart += 8;
+
+                if (shiftStart >= 8) shiftStart = 0;
+            }
+
+            // Sonucu endian'a göre yeniden düzenle
+            if (endian == Endianness.Big)
+            {
+                // BigEndian için byte'ları tersine çevir
+                byte[] resultBytes = BitConverter.GetBytes(result);
+                Array.Reverse(resultBytes);
+                result = BitConverter.ToInt32(resultBytes, 0);
+            }
+
+            instance.Setters[i](instance, (ulong)result);
+        }
 
             
-            //Console.WriteLine("Using ReadOnlySpan<byte> overload");
+
             
         }
 #else
@@ -29,12 +64,42 @@ public unsafe static void Deserialize<T, TProtoValue>(ref T instance, ReadOnlySp
        where T : class, IProtocol<T>
         where TProtoValue : struct, IProtocolValue<TProtoValue>
     {
-        for(int i=0;i<instance.Setters.Length;i++)
+       
+        var protoValues= default(TProtoValue);
+
+        for (int i=0;i< protoValues.FieldCount;i++)
         {
-            
+            var startBit= protoValues.StartBits[i];
+            var length= protoValues.Lengths[i];
+            var endian= protoValues.Endians[i];
 
+            int byteStartIndex = startBit / 8;
+            int bitOffset = startBit % 8;
+            int totalBits = length;
+            int totalBytes = (totalBits + bitOffset + 7) / 8;
+            byte[] fieldBytes = new byte[totalBytes];
+            Array.Copy(source, byteStartIndex, fieldBytes, 0, totalBytes);
+            int shiftStart = bitOffset;
+            int result = 0;
 
-            instance.Setters[i](instance,0);
+            foreach (var byteValue in fieldBytes)
+            {
+                result |= (byteValue << shiftStart);
+                shiftStart += 8;
+
+                if (shiftStart >= 8) shiftStart = 0;
+            }
+
+            // Sonucu endian'a göre yeniden düzenle
+            if (endian == Endianness.Big)
+            {
+                // BigEndian için byte'ları tersine çevir
+                byte[] resultBytes = BitConverter.GetBytes(result);
+                Array.Reverse(resultBytes);
+                result = BitConverter.ToInt32(resultBytes, 0);
+            }
+
+            instance.Setters[i](instance, (ulong)result);
         }
 
         Console.WriteLine("Using byte[] overload");

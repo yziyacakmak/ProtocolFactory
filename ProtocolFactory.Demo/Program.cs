@@ -22,4 +22,4 @@ Console.WriteLine(bbbb.First);
 
 
 
-//BenchmarkRunner.Run<Benchmark>();
+BenchmarkRunner.Run<Benchmark>();
