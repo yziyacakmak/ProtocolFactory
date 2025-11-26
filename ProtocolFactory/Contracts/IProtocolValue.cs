@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using ProtocolFactory.Core.Models;
+
+namespace ProtocolFactory.Core.Contracts;
+
+public interface IProtocolValue<TProto> where TProto : struct, IProtocolValue<TProto>
+{
+    int Length { get; }
+    int FieldCount { get; }
+    int[] StartBits { get; }
+    int[] Lengths { get; }
+    int[] Masks { get; }
+    int[] Shifts { get; }
+    Endianness[] Endians { get; }
+
+}
