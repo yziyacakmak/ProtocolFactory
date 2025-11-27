@@ -105,8 +105,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
                         Endian: endianStringName!,
                         Mask: mask, // 0xFFUL
                         Shift: shift, // 0
-                                      // Özelliğin Bayt Uzunluğu: (length + 7) / 8
-                        PropertyByteLength: (length + 7) / 8
+                        LengthAsByte: (length + 7) / 8
                     ));
                 }
             }
@@ -143,12 +142,10 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
         // Dizi Değerlerini C# kodu olarak oluşturma
         var startBitsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.StartBit))} }}";
         var lengthsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.Length))} }}";
-        // Maskeler ulong olarak hesaplandı, ancak int'e dönüştürülmeli (0xFFUL = 255, int sınırları içinde)
-        var masksArrayUlong = $"new ulong[] {{ {string.Join(", ", orderedFields.Select(f => $"0x{f.Mask:X}UL"))} }}";
-
+        
         // INT MASKELERİNİN OLUŞTURULMASI: ulong değerlerini int'e dönüştürerek
         var masksArrayInt = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => $"(int)0x{f.Mask:X}UL"))} }}";
-
+        var lengthAsByte = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.LengthAsByte))} }}";
         var shiftsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.Shift))} }}";
         var endiansArray = $"new Endianness[] {{ {string.Join(", ", orderedFields.Select(f => $"Endianness.{f.Endian}"))} }}";
 
@@ -164,6 +161,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
 
         // ⚠️ MASKS UYUMU: Arayüz int[] istediği için yeni int[] alanı tanımlanır.
         sb.AppendLine($"        private static readonly int[] _masksInt = {masksArrayInt};");
+        sb.AppendLine($"        private static readonly int[] _lengthAsByte = {lengthAsByte};");
 
         sb.AppendLine($"        private static readonly int[] _shifts = {shiftsArray};");
         sb.AppendLine($"        private static readonly Endianness[] _endians = {endiansArray};");
@@ -174,6 +172,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
 
         // ⚠️ MASKS UYUMU: int[] tipini uygulayan alan kullanılır.
         sb.AppendLine($"        public int[] Masks => _masksInt;");
+        sb.AppendLine($"        public int[] LengthAsByte => _lengthAsByte;");
 
         sb.AppendLine($"        public int[] Shifts => _shifts;");
         sb.AppendLine($"        public Endianness[] Endians => _endians;");
@@ -191,7 +190,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
     // Yeni hesaplanan değerler
     ulong Mask,       // Maske (örneğin 0b1111)
     int Shift,        // Kaydırma miktarı (ShiftAmount)
-    int PropertyByteLength // Özelliğin bayt cinsinden uzunluğu (genellikle Math.Ceiling(Length / 8.0))
+    int LengthAsByte // Özelliğin bayt cinsinden uzunluğu (genellikle Math.Ceiling(Length / 8.0))
     );
 
     public record ClassInfo(

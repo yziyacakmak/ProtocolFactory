@@ -19,7 +19,12 @@ var bbbb= new MyFirstProtocol();
 // Console.WriteLine(bbbb.First);
 
 
+var startBit = 15;
+var length = 16;
 
+var lsb1=BitExchange.MsbToLsbBigEndian(startBit, length);
+var mask = BitExchange.MaskCalculation(startBit,length);
+Console.WriteLine(lsb1);
+Console.WriteLine($"{mask:X}");
 
-
-BenchmarkRunner.Run<Benchmark>();
+//BenchmarkRunner.Run<Benchmark>();

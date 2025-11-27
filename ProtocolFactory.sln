@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolFactory.Demo", "Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolFactory.Analyzers", "ProtocolFactory.Analyzers\ProtocolFactory.Analyzers.csproj", "{43A61CE5-D3EF-44E2-8374-92CC39CC4240}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolFactory.Tests", "ProtocolFactory.Tests\ProtocolFactory.Tests.csproj", "{DD355432-7F0C-40D1-8A80-CDC35589134C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{43A61CE5-D3EF-44E2-8374-92CC39CC4240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43A61CE5-D3EF-44E2-8374-92CC39CC4240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43A61CE5-D3EF-44E2-8374-92CC39CC4240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD355432-7F0C-40D1-8A80-CDC35589134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD355432-7F0C-40D1-8A80-CDC35589134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD355432-7F0C-40D1-8A80-CDC35589134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD355432-7F0C-40D1-8A80-CDC35589134C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

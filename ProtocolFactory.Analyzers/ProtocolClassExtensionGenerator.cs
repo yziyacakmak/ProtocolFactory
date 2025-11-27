@@ -96,7 +96,7 @@ namespace ProtocolFactory.Analyzers
             // ProtocolClassExtensions.Serialize<T, TProtoValue>(ref instance, source)
 
             // ProtocolSerializerExtensions yerine ProtocolClassExtensions kullanıldı (önceki konuşmaya istinaden)
-            sb.AppendLine($"            Deserialization.Deserialize<{classInfo.Name}, {classInfo.Name}Value>(ref instance, source);");
+            sb.AppendLine($"            Deserialization.Deserialize<{classInfo.Name}, {classInfo.Name}Value>(instance, source);");
             sb.AppendLine($"        }}");
 
             sb.AppendLine($"    }}");
