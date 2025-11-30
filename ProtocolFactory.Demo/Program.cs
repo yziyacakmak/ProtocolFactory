@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using System.Buffers.Binary;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using BenchmarkDotNet.Running;
 using ProtocolFactory.Core.Contracts;
@@ -9,22 +12,13 @@ using ProtocolFactory.Demo.Example;
 
 var b = new Benchmark();
 
-byte[] protocolData = new byte[] { 0x01, 0x2C, 0xFF, 0xEE };
-var bbbb= new MyFirstProtocol();
+byte[] protocolData =[0x01, 0x2C, 0xFF, 0xEE,0x01, 0x2C, 0xFF, 0xEE];
 
-///can recieved byte[]
-
-// bbbb.Deserialize(protocolData);
-
-// Console.WriteLine(bbbb.First);
+var bbbb= new MySecondProtocol();
 
 
-var startBit = 15;
-var length = 16;
+bbbb.DeserializeInline(protocolData);
+Console.WriteLine(bbbb.First);
 
-var lsb1=BitExchange.MsbToLsbBigEndian(startBit, length);
-var mask = BitExchange.MaskCalculation(startBit,length);
-Console.WriteLine(lsb1);
-Console.WriteLine($"{mask:X}");
 
-//BenchmarkRunner.Run<Benchmark>();
+BenchmarkRunner.Run<Benchmark>();

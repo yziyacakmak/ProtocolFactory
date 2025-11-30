@@ -1,6 +1,6 @@
-namespace ProtocolFactory.Core.Math;
+namespace ProtocolFactory.Analyzers.Calculation;
 
-public class BitExchange
+public class Numerics
 {
     public static int MsbToLsbBigEndian(int msbBit, int length)
     {
@@ -54,7 +54,4 @@ public class BitExchange
         var shiftAmount =lsbBitInByte;
         return shiftAmount;
     }
-    
-    
-    
 }

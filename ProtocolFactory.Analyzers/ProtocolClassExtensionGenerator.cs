@@ -77,7 +77,7 @@ namespace ProtocolFactory.Analyzers
 
             // Sınıfın kendisi ve üretilen struct'ın adını alarak extension metodu üret.
 
-            sb.AppendLine($"    public static class {extensionClassName}");
+            sb.AppendLine($"    public static partial class {extensionClassName}");
             sb.AppendLine($"    {{");
 
             // Extension metot: ReadOnlySpan<byte> alıp sınıfı doldurur.

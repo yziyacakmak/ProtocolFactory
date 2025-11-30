@@ -14,15 +14,15 @@ namespace ProtocolFactory.Demo.Example
     public partial class MyFirstProtocol
     {
       
-        [ProtocolField(0,16,Endianness.Big)]
+        [ProtocolField(15,8,Endianness.Big)]
         public int First { get; set;}
 
         [ProtocolField(16, 8, Endianness.Big)]
         public int Second { get; set; }
 
 
-        [ProtocolField(24, 8, Endianness.Little)]
-        public int Third { get; set; }
+        // [ProtocolField(24, 8, Endianness.Little)]
+        // public int Third { get; set; }
 
     }
 }

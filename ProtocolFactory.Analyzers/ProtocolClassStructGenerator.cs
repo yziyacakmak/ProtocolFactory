@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using ProtocolFactory.Analyzers.Calculation;
 using ProtocolFactory.Core.Attributes;
+using ProtocolFactory.Core.Math;
 using ProtocolFactory.Core.Models;
 
 namespace ProtocolFactory.Analyzers;
@@ -13,21 +15,13 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // 1. [Protocol] ile işaretli sınıfları bul
         var protocolClasses = context.SyntaxProvider
             .CreateSyntaxProvider(
-                // Predicate: Hızlı filtreleme: Attribute listesi olan Class Declaration'ları seç
                 predicate: static (s, _) => s is ClassDeclarationSyntax c && c.AttributeLists.Count > 0,
-
-                // Transform: Anlamsal model ile detaylı analiz yap ve meta verileri hesapla
                 transform: static (ctx, cancellationToken) => GetProtocolClassInfo(ctx)
             )
-            // Sadece uygun sınıfları (partial ve [Protocol] ile işaretli) filtrele
             .Where(static info => info is not null)
             .Select(static (info, _) => info!);
-
-
-        // 2. Kaynak Kodu Üret (Struct ve IProtocolValue implementasyonu)
         context.RegisterSourceOutput(protocolClasses,
             static (spc, classInfo) => Execute(spc, classInfo));
     }
@@ -42,8 +36,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
         {
             return null;
         }
-
-        // 1. [Protocol] özniteliği kontrolü
+        
         var hasProtocolAttribute = classSymbol.GetAttributes()
             .Any(attr => attr.AttributeClass?.Name == nameof(ProtocolAttribute));
 
@@ -51,8 +44,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
         {
             return null;
         }
-
-        // 2. İşaretlenmiş Özellikleri Topla ve Hesapla
+        
         var totalBitLength = 0;
         var fields = new List<PropertyInfo>();
 
@@ -60,7 +52,7 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
         {
             var fieldAttribute = member.GetAttributes()
                 .FirstOrDefault(attr => attr.AttributeClass?.Name == nameof(ProtocolFieldAttribute));
-
+            
             if (fieldAttribute is not null)
             {
                 if (fieldAttribute.ConstructorArguments.Length == 3)
@@ -68,44 +60,27 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
                     var startBit = (int)fieldAttribute.ConstructorArguments[0].Value!;
                     var length = (int)fieldAttribute.ConstructorArguments[1].Value!;
                     var endianArgument = fieldAttribute.ConstructorArguments[2];
-                    string endianStringName;
 
-                    if (endianArgument.Kind == TypedConstantKind.Enum)
-                    {
-                        // Argument'in değerinin bir ISymbol olduğunu varsayarak adını alıyoruz.
-                        // Bu, "Little" veya "Big" string'ini verir.
-                        var enumMember = endianArgument.Value as ISymbol;
-                        endianStringName = enumMember?.Name ?? "Little";
-                    }
-                    else
-                    {
-                        // Fallback veya hata işleme
-                        endianStringName = "Little";
-                    }
+                    totalBitLength += length;
+                    var enumIntValue = (int)endianArgument.Value!;
+                    var endianStringName = enumIntValue == 0 ? "Little" : "Big";
+                    var endianValue = (Endianness)enumIntValue;
 
-                    // 🚨 GÜNCELLENMİŞ HESAPLAMALAR 🚨
+                    var mask = Numerics.MaskCalculation(startBit, length);
+                    var shift = Numerics.ShiftAmount(startBit, length);
+                    var lsb = Numerics.MsbToLsbBigEndian(startBit, length);
+                    var lengthAsByteHolder = (lsb / 8) - (startBit / 8) + 1;
 
-                    // 1. Maske (Mask): İsteğe göre sabit 0xFFUL olarak ayarlandı.
-                    ulong mask = 0xFFUL;
-
-                    // 2. Kaydırma Miktarı (Shift): İsteğe göre sabit 0 olarak ayarlandı.
-                    int shift = 0;
-
-                    // Toplam bit uzunluğunu güncelle (Bu kısım, struct'ın toplam uzunluğu için hala önemlidir.)
-                    if (startBit + length > totalBitLength)
-                    {
-                        totalBitLength = startBit + length;
-                    }
 
                     fields.Add(new PropertyInfo(
                         Name: member.Name,
                         Type: member.Type.ToDisplayString(),
                         StartBit: startBit,
                         Length: length,
-                        Endian: endianStringName!,
-                        Mask: mask, // 0xFFUL
-                        Shift: shift, // 0
-                        LengthAsByte: (length + 7) / 8
+                        Endian: endianStringName,
+                        Mask: mask, 
+                        Shift: shift,
+                        LengthAsByte: lengthAsByteHolder
                     ));
                 }
             }
@@ -142,12 +117,13 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
         // Dizi Değerlerini C# kodu olarak oluşturma
         var startBitsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.StartBit))} }}";
         var lengthsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.Length))} }}";
-        
+
         // INT MASKELERİNİN OLUŞTURULMASI: ulong değerlerini int'e dönüştürerek
-        var masksArrayInt = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => $"(int)0x{f.Mask:X}UL"))} }}";
+        var masksArrayInt = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => $"(int)0x{f.Mask:X}"))} }}";
         var lengthAsByte = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.LengthAsByte))} }}";
         var shiftsArray = $"new int[] {{ {string.Join(", ", orderedFields.Select(f => f.Shift))} }}";
-        var endiansArray = $"new Endianness[] {{ {string.Join(", ", orderedFields.Select(f => $"Endianness.{f.Endian}"))} }}";
+        var endiansArray =
+            $"new Endianness[] {{ {string.Join(", ", orderedFields.Select(f => $"Endianness.{f.Endian}"))} }}";
 
         // Arayüz Implementasyonları (Propertyler)
         sb.AppendLine($"        public int Length => {classInfo.TotalByteLength};");
@@ -186,20 +162,23 @@ public class ProtocolClassStructGenerator : IIncrementalGenerator
     }
 
     public record PropertyInfo(
-    string Name, string Type, int StartBit, int Length, string Endian,
-    // Yeni hesaplanan değerler
-    ulong Mask,       // Maske (örneğin 0b1111)
-    int Shift,        // Kaydırma miktarı (ShiftAmount)
-    int LengthAsByte // Özelliğin bayt cinsinden uzunluğu (genellikle Math.Ceiling(Length / 8.0))
+        string Name,
+        string Type,
+        int StartBit,
+        int Length,
+        string Endian,
+        // Yeni hesaplanan değerler
+        int Mask, // Maske (örneğin 0b1111)
+        int Shift, // Kaydırma miktarı (ShiftAmount)
+        int LengthAsByte // Özelliğin bayt cinsinden uzunluğu (genellikle Math.Ceiling(Length / 8.0))
     );
 
     public record ClassInfo(
-    string Name,
-    string Namespace,
-    string Accessibility,
-    List<PropertyInfo> Fields,
-    int TotalBitLength, // Protokolün toplam bit uzunluğu
-    int TotalByteLength // Protokolün toplam bayt uzunluğu (Math.Ceiling(TotalBitLength / 8.0))
-     );
-
+        string Name,
+        string Namespace,
+        string Accessibility,
+        List<PropertyInfo> Fields,
+        int TotalBitLength, // Protokolün toplam bit uzunluğu
+        int TotalByteLength // Protokolün toplam bayt uzunluğu (Math.Ceiling(TotalBitLength / 8.0))
+    );
 }

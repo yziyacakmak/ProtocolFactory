@@ -18,31 +18,18 @@ public static unsafe void Deserialize<T, TProtoValue>(T instance, ReadOnlySpan<b
         for (var i=0;i< protoValues.FieldCount;i++)
         {
             var startBit= protoValues.StartBits[i];
-            var length= protoValues.Lengths[i];
             var endian= protoValues.Endians[i];
-
-            int byteStartIndex = startBit / 8;
-            int bitOffset = startBit % 8;
-            int totalBits = length;
-            int totalBytes = (totalBits + bitOffset + 7) / 8;
-            ReadOnlySpan<byte> fieldBytes = source.Slice(byteStartIndex, totalBytes);
-            int shiftStart = bitOffset;
-            int result = 0;
-
-            foreach (var byteValue in fieldBytes)
-            {
-                result |= (byteValue << shiftStart);
-                shiftStart += 8;
-
-                if (shiftStart >= 8) shiftStart = 0;
-            }
+            var byteStartIndex = startBit / 8;
+            var fieldBytes = source.Slice(byteStartIndex, protoValues.LengthAsByte[i]);
+            var result = 0;
 
             if (endian == Endianness.Big)
             {
-                byte[] resultBytes = BitConverter.GetBytes(result);
-                Array.Reverse(resultBytes);
-                result = BitConverter.ToInt32(resultBytes, 0);
+                result=ProtocolPrimitives.ReadInt32BigEndianPtr(fieldBytes);
+                result &= protoValues.Masks[i];
+                result >>= protoValues.Shifts[i];
             }
+            
 
             instance.Setters[i](instance, (ulong)result);
         }

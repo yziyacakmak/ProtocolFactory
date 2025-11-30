@@ -12,12 +12,13 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" Condition="$([MSBuild]::IsOSPlatform('OSX'))"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" Condition="!$([MSBuild]::IsOSPlatform('OSX'))"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ProtocolFactory\ProtocolFactory.Core.csproj" OutputItemType="Analyzer"/>
+        <ProjectReference Include="..\ProtocolFactory\ProtocolFactory.Core.csproj" OutputItemType="Analyzer" Label="Shared"/>
     </ItemGroup>
     <PropertyGroup>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>

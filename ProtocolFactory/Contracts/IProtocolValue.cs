@@ -10,6 +10,7 @@ public interface IProtocolValue<TProto> where TProto : struct, IProtocolValue<TP
     int[] Lengths { get; }
     int[] Masks { get; }
     int[] Shifts { get; }
+    int[] LengthAsByte { get; }
     Endianness[] Endians { get; }
 
 }
