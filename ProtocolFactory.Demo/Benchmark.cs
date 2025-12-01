@@ -37,12 +37,7 @@ public class Benchmark
         protocolInstance2.DeserializeInline(protocolData);
         consumer.Consume(protocolInstance2);    
     }
-    [Benchmark]
-    public void InlineBigInstance()
-    {
-        protocolInstance2.DeserializeInstance(protocolData);
-        consumer.Consume(protocolInstance2);    
-    }
+
     
     [Benchmark]
     public void InlineLittleBig()

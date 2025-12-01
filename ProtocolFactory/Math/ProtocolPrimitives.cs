@@ -103,6 +103,35 @@ public static class ProtocolPrimitives
         return retValue;
     }
     
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short ReadLittleEndianInt16Unsafe(ReadOnlySpan<byte> source)
+    {
+        const int bufferSize = sizeof(short);
+        var sourceLength=source.Length;
+        var retValue=Unsafe.ReadUnaligned<short>(ref MemoryMarshal.GetReference(source));
+        if (BitConverter.IsLittleEndian)
+        {
+            var maskSize = (bufferSize - sourceLength) * 8;
+            var mask = (1 << maskSize )- 1;
+            return (short)(retValue & mask);
+        }
+        return retValue;
+    }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort ReadLittleEndianUInt16Unsafe(ReadOnlySpan<byte> source)
+    {
+        const int bufferSize = sizeof(ushort);
+        var sourceLength=source.Length;
+        var retValue=Unsafe.ReadUnaligned<ushort>(ref MemoryMarshal.GetReference(source));
+        if (BitConverter.IsLittleEndian)
+        {
+            var maskSize = (bufferSize - sourceLength) * 8;
+            var mask = (1 << maskSize )- 1;
+            return (ushort)(retValue & mask);
+        }
+        return retValue;
+    }
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int ReadLittleEndianInt32Unsafe(ReadOnlySpan<byte> source)
     {
@@ -113,11 +142,52 @@ public static class ProtocolPrimitives
         {
             var maskSize = (bufferSize - sourceLength) * 8;
             var mask = (1 << maskSize )- 1;
-            retValue&= mask;
-            return retValue;
-            
-            
-            return retValue >>((bufferSize - sourceLength)*8);
+            return retValue & mask;
+        }
+        return retValue;
+    }
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ReadLittleEndianUInt32Unsafe(ReadOnlySpan<byte> source)
+    {
+        const int bufferSize = sizeof(uint);
+        var sourceLength=source.Length;
+        var retValue=Unsafe.ReadUnaligned<uint>(ref MemoryMarshal.GetReference(source));
+        if (BitConverter.IsLittleEndian)
+        {
+            var maskSize = (bufferSize - sourceLength) * 8;
+            var mask = (1 << maskSize )- 1;
+            return retValue & (uint)mask;
+        }
+        return retValue;
+    }
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long ReadLittleEndianInt64Unsafe(ReadOnlySpan<byte> source)
+    {
+        const int bufferSize = sizeof(long);
+        var sourceLength=source.Length;
+        var retValue=Unsafe.ReadUnaligned<long>(ref MemoryMarshal.GetReference(source));
+        if (BitConverter.IsLittleEndian)
+        {
+            var maskSize = (bufferSize - sourceLength) * 8;
+            var mask = (1 << maskSize )- 1;
+            return retValue & mask;
+        }
+        return retValue;
+    }
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong ReadLittleEndianUInt64Unsafe(ReadOnlySpan<byte> source)
+    {
+        const int bufferSize = sizeof(ulong);
+        var sourceLength=source.Length;
+        var retValue=Unsafe.ReadUnaligned<ulong>(ref MemoryMarshal.GetReference(source));
+        if (BitConverter.IsLittleEndian)
+        {
+            var maskSize = (bufferSize - sourceLength) * 8;
+            var mask = (1 << maskSize )- 1;
+            return retValue & (ulong)mask;
         }
         return retValue;
     }

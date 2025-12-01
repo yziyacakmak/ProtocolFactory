@@ -117,60 +117,71 @@ public class ProtocolClassSetterExtensionGenerator: IIncrementalGenerator
 
                 foreach (var field in fields)
                 {
-                    if (field.Endian == "Big")
+                    var startBit= field.StartBit;
+                    var length = field.Length;
+                    var byteStartIndex = startBit / 8;
+                    var byteEndIndex =   field.Endian == "Big" ? Numerics.MsbToLsbBigEndian(startBit,length)/8:Numerics.LsbToMsbLittleEndian(startBit,length)/8;
+                    var lengthAsByte = byteEndIndex - byteStartIndex + 1;
+                    var mask = field.Endian == "Big"
+                        ? Numerics.MaskCalculation(startBit, length)
+                        : Numerics.MaskCalculationLittleEndian(startBit, length);
+                    var shift = field.Endian == "Big"
+                        ? Numerics.ShiftAmount(startBit, length)
+                        : Numerics.ShiftAmountLittleEndian(startBit);
+                    sb.AppendLine(lengthAsByte > 1
+                        ? $"            var {field.Name}Result=ProtocolPrimitives.Read{field.Endian}EndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));"
+                        : $"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
+                    sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
+                    if (shift > 0)
                     {
-                        var startBit= field.StartBit;
-                        var length = field.Length;
-                        var byteStartIndex = startBit / 8;
-                        var lsb=Calculation.Numerics.MsbToLsbBigEndian(startBit,length);
-                        var byteEndIndex = lsb / 8;
-                        var lengthAsByte = byteEndIndex - byteStartIndex + 1;
-                        var mask = Numerics.MaskCalculation(startBit, length);
-                        var shift = Numerics.ShiftAmount(startBit, length);
-                        if (lengthAsByte > 1)
-                        {
-                            sb.AppendLine($"            var {field.Name}Result=ProtocolPrimitives.ReadBigEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));");
-                        }
-                        else
-                        {
-                            sb.AppendLine($"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
-                        }
-                        
-                        sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
-                        if (shift > 0)
-                        {
-                            sb.AppendLine($"            {field.Name}Result >>= {shift};");
-                        }
-                        sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
-                        
+                        sb.AppendLine($"            {field.Name}Result >>= {shift};");
                     }
-                    else
-                    {
-                        var startBit= field.StartBit;
-                        var length = field.Length;
-                        var byteStartIndex = startBit / 8;
-                        var msb=Calculation.Numerics.LsbToMsbLittleEndian(startBit,length);
-                        var byteEndIndex = msb / 8;
-                        var lengthAsByte = byteEndIndex - byteStartIndex + 1;
-                        var mask = Numerics.MaskCalculationLittleEndian(startBit, length);
-                        var shift = Numerics.ShiftAmountLittleEndian(startBit);
-                        if (lengthAsByte > 1)
-                        {
-                            sb.AppendLine($"            var {field.Name}Result=ProtocolPrimitives.ReadLittleEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));");
-                        }
-                        else
-                        {
-                            sb.AppendLine($"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
-                        }
-                        
-                        
-                        sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
-                        if (shift > 0)
-                        {
-                            sb.AppendLine($"            {field.Name}Result >>= {shift};");
-                        }
-                        sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
-                    }
+                    sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
+                    
+                    // if (field.Endian == "Big")
+                    // {
+                    //     var startBit= field.StartBit;
+                    //     var length = field.Length;
+                    //     var byteStartIndex = startBit / 8;
+                    //     var lsb=Numerics.MsbToLsbBigEndian(startBit,length);
+                    //     var byteEndIndex = lsb / 8;
+                    //     var lengthAsByte = byteEndIndex - byteStartIndex + 1;
+                    //     var mask = Numerics.MaskCalculation(startBit, length);
+                    //     var shift = Numerics.ShiftAmount(startBit, length);
+                    //     sb.AppendLine(lengthAsByte > 1
+                    //         ? $"            var {field.Name}Result=ProtocolPrimitives.ReadBigEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));"
+                    //         : $"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
+                    //
+                    //     sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
+                    //     if (shift > 0)
+                    //     {
+                    //         sb.AppendLine($"            {field.Name}Result >>= {shift};");
+                    //     }
+                    //     sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
+                    //     
+                    // }
+                    // else
+                    // {
+                    //     var startBit= field.StartBit;
+                    //     var length = field.Length;
+                    //     var byteStartIndex = startBit / 8;
+                    //     var msb=Numerics.LsbToMsbLittleEndian(startBit,length);
+                    //     var byteEndIndex = msb / 8;
+                    //     var lengthAsByte = byteEndIndex - byteStartIndex + 1;
+                    //     var mask = Numerics.MaskCalculationLittleEndian(startBit, length);
+                    //     var shift = Numerics.ShiftAmountLittleEndian(startBit);
+                    //     sb.AppendLine(lengthAsByte > 1
+                    //         ? $"            var {field.Name}Result=ProtocolPrimitives.ReadLittleEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));"
+                    //         : $"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
+                    //
+                    //
+                    //     sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
+                    //     if (shift > 0)
+                    //     {
+                    //         sb.AppendLine($"            {field.Name}Result >>= {shift};");
+                    //     }
+                    //     sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
+                    // }
                 }
                 
             
