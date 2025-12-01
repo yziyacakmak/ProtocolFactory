@@ -12,7 +12,7 @@ using ProtocolFactory.Core.Contracts;
 
 namespace ProtocolFactory.Analyzers;
 
-[Generator]
+[Generator] //unused
 public class ProtocolClassExtenderGenerator : IIncrementalGenerator
 {
 

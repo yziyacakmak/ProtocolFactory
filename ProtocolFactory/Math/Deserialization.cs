@@ -25,7 +25,7 @@ public static unsafe void Deserialize<T, TProtoValue>(T instance, ReadOnlySpan<b
 
             if (endian == Endianness.Big)
             {
-                result=ProtocolPrimitives.ReadInt32BigEndianPtr(fieldBytes);
+                result=ProtocolPrimitives.ReadBigEndianInt32Unsafe(fieldBytes);
                 result &= protoValues.Masks[i];
                 result >>= protoValues.Shifts[i];
             }

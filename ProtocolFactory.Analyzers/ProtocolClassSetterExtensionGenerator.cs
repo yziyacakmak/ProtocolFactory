@@ -127,7 +127,15 @@ public class ProtocolClassSetterExtensionGenerator: IIncrementalGenerator
                         var lengthAsByte = byteEndIndex - byteStartIndex + 1;
                         var mask = Numerics.MaskCalculation(startBit, length);
                         var shift = Numerics.ShiftAmount(startBit, length);
-                        sb.AppendLine($"            var {field.Name}Result=ProtocolPrimitives.ReadInt32BigEndianPtr(source.Slice({byteStartIndex}, {lengthAsByte}));");
+                        if (lengthAsByte > 1)
+                        {
+                            sb.AppendLine($"            var {field.Name}Result=ProtocolPrimitives.ReadBigEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
+                        }
+                        
                         sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
                         if (shift > 0)
                         {
@@ -138,7 +146,30 @@ public class ProtocolClassSetterExtensionGenerator: IIncrementalGenerator
                     }
                     else
                     {
-                        sb.AppendLine($"            instance.{field.Name}=0;");
+                        var startBit= field.StartBit;
+                        var length = field.Length;
+                        var byteStartIndex = startBit / 8;
+                        var msb=Calculation.Numerics.LsbToMsbLittleEndian(startBit,length);
+                        var byteEndIndex = msb / 8;
+                        var lengthAsByte = byteEndIndex - byteStartIndex + 1;
+                        var mask = Numerics.MaskCalculationLittleEndian(startBit, length);
+                        var shift = Numerics.ShiftAmountLittleEndian(startBit);
+                        if (lengthAsByte > 1)
+                        {
+                            sb.AppendLine($"            var {field.Name}Result=ProtocolPrimitives.ReadLittleEndianInt32Unsafe(source.Slice({byteStartIndex}, {lengthAsByte}));");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"            var {field.Name}Result=({field.Type})source[{byteStartIndex}];");
+                        }
+                        
+                        
+                        sb.AppendLine($"            {field.Name}Result &= 0x{mask:X};");
+                        if (shift > 0)
+                        {
+                            sb.AppendLine($"            {field.Name}Result >>= {shift};");
+                        }
+                        sb.AppendLine($"            instance.{field.Name}=({field.Type}){field.Name}Result;");
                     }
                 }
                 

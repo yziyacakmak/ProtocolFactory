@@ -9,7 +9,7 @@ using ProtocolFactory.Core.Attributes;
 
 namespace ProtocolFactory.Analyzers
 {
-    [Generator]
+    //[Generator] unused
     public class ProtocolClassExtensionGenerator : IIncrementalGenerator
     {
         public void Initialize(IncrementalGeneratorInitializationContext context)

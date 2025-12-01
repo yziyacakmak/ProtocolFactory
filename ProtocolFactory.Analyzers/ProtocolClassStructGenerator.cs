@@ -10,7 +10,7 @@ using ProtocolFactory.Core.Models;
 
 namespace ProtocolFactory.Analyzers;
 
-[Generator]
+//[Generator] //unused
 public class ProtocolClassStructGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)

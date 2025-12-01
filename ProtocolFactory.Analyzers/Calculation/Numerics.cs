@@ -50,8 +50,22 @@ public class Numerics
     public static int ShiftAmount(int msbBit, int length)
     {
         var lsbBit = MsbToLsbBigEndian(msbBit,length);
-        var lsbBitInByte = lsbBit % 8;
-        var shiftAmount =lsbBitInByte;
-        return shiftAmount;
+        return lsbBit % 8;
+    }
+    
+    public static int LsbToMsbLittleEndian(int lsbBit, int length)
+    {
+        return lsbBit + length - 1;
+    }
+    public static int MaskCalculationLittleEndian(int lsbBit,int length)
+    {
+        var startByteIndex = lsbBit / 8;
+        var mask = ((1 << length) - 1) << lsbBit;
+        mask >>= (startByteIndex * 8);
+        return mask;
+    }
+    public static int ShiftAmountLittleEndian(int lsbBit)
+    {
+        return  lsbBit % 8;
     }
 }
